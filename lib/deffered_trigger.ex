@@ -1,0 +1,2 @@
+defmodule DefferedTrigger do
+end
