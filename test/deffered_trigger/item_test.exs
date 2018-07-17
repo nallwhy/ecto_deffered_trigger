@@ -6,6 +6,11 @@ defmodule DefferedTrigger.ItemTest do
   test "" do
     assert {:ok, item} = Item.create(%{})
 
+    sql = """
+    SET CONSTRAINTS ALL IMMEDIATE;
+    """
+    Ecto.Adapters.SQL.query!(Repo, sql)
+
     item = Item |> Repo.get(item.id)
     assert item.field_trigger == "hi"
     assert item.field_deffered_trigger == "hello"
